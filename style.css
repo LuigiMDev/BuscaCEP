@@ -1,0 +1,25 @@
+
+main {
+    height: calc(100% - 56px);
+}
+
+.section {
+    height: 100vh;
+}
+
+.lead {
+    opacity: 0.8;
+}
+
+#main__div {
+    background: url(images/rome.png) no-repeat center/cover;
+    background-attachment: fixed;
+}
+
+#div__img {
+    width: 120px;
+}
+
+#div__p {
+    opacity: 0.8;
+}
