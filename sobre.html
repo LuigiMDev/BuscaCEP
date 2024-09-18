@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre - BuscaCEP</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Importa o Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- CSS clássico -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- INÍCIO DO CONTAINER DE NAV + MAIN + FOOTER -->
+    <!-- classes:
+      min-vh-100: Equivalente a min-height: 100vh;
+      d-flex: Equivalente a display: flex;
+      flex-column: Equivalente a flex-direction: column; 
+    -->
+    <div class="min-vh-100 d-flex flex-column">
+      <!-- INÍCIO DA NAVBAR -->
+      <!-- classes:
+        navbar: Faz ser uma barra de navegação;
+        navbar-expand-md: Do tamanho md (medium) pra cima, a navbar fica normal, dali pra baixo ela colapsa, esse colapso é o que vai fazer aquele menu sanduíche aparecer;
+        text-bg-dark: Deixa o fundo escuro e o texto claro;
+        navbar-dark: Função similar, mas feito para a navbar.
+      -->
+      <nav class="navbar navbar-expand-md text-bg-dark navbar-dark">
+        <!-- classes:
+        container-fluid: Cria um container que fica bem próximo das bordas da tela
+       -->
+        <div class="container-fluid">
+          <!-- classes:
+          navbar-brand: É para adicionar aquela logo no canto esquerdo da navbar que todo site tem, como eu quero que seja clicável, coloquei numa tag <a>, mas poderia ser em outra, tipo a <span>;
+          h1: Formata o texto como se fosse uma tag <h1>;
+          mb-0: A tag <h1> tem margem abaixo, eu não quero que tenha nesse caso, então usei a abreviação de margin-bottom (mb) e especifiquei o valor 0, esse valor varia de 0 a 5.
+        -->
+          <a href="index.html" class="navbar-brand h1 mb-0">
+            <!-- classes:
+            mb-1: Adiciona margin-bottom (mb) de 1, para saber o tamanho disso, entenda que o Bootstrap usa uma variável que é o equivalente ao rem, se você passa 1, é 0.25rem, 2 é 0.5, 3 é 1rem, 4 é 1.5rem e 5 é 3rem, nesse caso como não editei nada, o rem é 16px.
+          -->
+            <img
+              src="images/lupa-branca.svg"
+              width="35px"
+              class="mb-1"
+              alt="Lupa"
+            />
+            BuscarCEP
+          </a>
+          <!-- classes:
+          navbar-toggler: Especifica que esse botão que vai ser o que vai controlar menu sanduíche da navbar.
+        atributos:
+          data-bs-toggle: Especifica a ação que esse botão vai fazer;
+          data-bs-target: Especifica o alvo dessa ação;
+          aria-controls: Atributos que começam com aria tem relação com semântica para leitores de tela, esse descreve o que esse botão controla, nesse caso, passei o id da barra de navegação ;
+          aria-label: Descreve a ação.
+        -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#nav"
+            aria-controls="nav"
+            aria-label="Expand Navegation"
+          >
+            <!-- classes:
+          navbar-toggler-icon: Marca onde o ícone do menu sanduíche vai aparecer, só o botão não é suficiente 
+        -->
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- classes:
+          collapse: Collapse é aquele item que abre e fecha tipo sanfona, aqui to fizendo que os links da barra de navegação serão assim;
+          navbar-collapse: Especifica mais ainda o tipo de collapse.
+        id:
+          existe para conectar com o botão que fará isso colapsar ou não em telas menores.
+        -->
+          <div class="collapse navbar-collapse" id="nav">
+            <!-- classes:
+            navbar-nav: Parece confuso, mas essa classe indica que parte da navbar contém os itens para navegar (links), nesse caso, o Bootstrap chamou essa parte de nav. 
+          -->
+            <ul class="navbar-nav">
+              <!-- classes:
+              nav-item: Indica que esse é um dos itens da nav. 
+            -->
+              <li class="nav-item">
+                <!-- classes:
+                nav-link: Indica que isso é um link de nav, ele adequa a estética sozinho;
+                active: Diz que esse é o link que deve ficar brilhando mais claro para indicar "você está aqui".
+              -->
+                <a href="index.html" class="nav-link">Início</a>
+              </li>
+              <!-- classes:
+              nav-item: Indica que esse é um dos itens da nav. 
+            -->
+              <li class="nav-item">
+                <!-- classes:
+                nav-link: Indica que isso é um link de nav, ele adequa a estética sozinho. 
+              -->
+                <a href="buscar.html" class="nav-link">Buscar CEP</a>
+              </li>
+              <!-- classes:
+              nav-item: Indica que esse é um dos itens da nav. 
+            -->
+              <li class="nav-item">
+                <!-- classes:
+                nav-link: Indica que isso é um link de nav, ele adequa a estética sozinho. 
+              -->
+                <a href="sobre.html" class="nav-link active" aria-current="page"
+                  >Sobre</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- FIM DA NAVBAR -->
+
+      <!-- INÍCIO DA MAIN -->
+      <!-- classes:
+        flex-grow-1: Essa propriedade no CSS faz com que um elemento varie mais de tamanho quando damos ou tiramos zoom que os outros da flexbox, nesse caso, estou fazendo isso para que a main ocupe o espaço que sobrou da tela, fazendo o rodapé colar no final da página, contemplem o magoooo;
+        d-flex: Equivalente ao display: flex;
+      -->
+      <main class="flex-grow-1 d-flex flex-column bg-dark">
+        <!-- INÍCIO DA DIV COM TODO O CONTEÚDO DA MAIN QUE TEM FOTO DE FUNDO -->
+        <!-- classes:
+        text-bg-dark: Define que o fundo vai ser escuro e o texto vai se adequar a isso;
+        container-fluid: Faz aquele container que vai até os cantos;
+        flex-grow-1: Essa propriedade no CSS faz com que um elemento varie mais de tamanho quando damos ou tiramos zoom que os outros da flexbox, nesse caso, estou fazendo isso para que a main ocupe o espaço que sobrou da tela, fazendo o rodapé colar no final da página, contemplem o magoooo;
+        bg-image: Define que essa tag vai ter uma background-image (não é pro Bootstrap);
+        d-flex: Equivalente ao display: flex;
+        align-items-center: Equivalente ao align-items: center;
+        justify-content-center: Equivalente ao justify-content: center; Estou fazendo isso pois quero centralizar o conteúdo principal da main bem no meio dela (no caso, estou centralizando a div onde os itens estão).
+        atributos:
+        id: Coloquei id pois no style.css estamos modificando a imagem de fundo.
+        -->
+        <div
+          id="main__div"
+          class="text-bg-dark container-fluid flex-grow-1 bg-image d-flex align-items-center justify-content-center"
+        >
+          <!-- classes:
+        container: Cria uma caixa com distanciamento para a borda da janela;
+        px-4: Padding no eixo x (left e right) de tamanho 4;
+        py-5: Padding no eixo y (top e bottom) de tamanho 5;
+       -->
+          <div class="container px-4 py-5">
+            <!-- classes:
+            row: rows são parte da estrutura base da grid do Bootstrap, são justamente linhas dentro de um container, dentro de uma row são colocadas colunas;
+            g-5: Sigla pra gutter, é o espaçamento entre as colunas dessa row (é bem parecido com o gap do CSS puro);
+            py-5: Padding no eixo y de 5;
+            d-flex: display flex;
+            flex-md-row-reverse: Quando a tela está no tamanho médio pra cima, o flex-direction dessa div fica "row reverse";
+            align-items-center: A mesma propriedade do CSS puro, como expliquei em outras partes do código;
+            justify-content-center: Mesma forma do de cima.
+          -->
+            <div
+              class="row g-5 py-5 d-flex flex-md-row-reverse align-items-center justify-content-center"
+            >
+              <!-- DIV DO BRASIL -->
+              <!-- classes:
+              col-10: Uma row, na grid do Bootstrap, tem 12 colunas, aqui to dizendo que essa div em questão vai ocupar 10 delas (as 10 do meio tendo em vista que centralizei ali em cima), como não especifiquei um tamanho, na teoria todos os tamanhos de tela vão ter essa regra, mas logo depois especifiquei outras regras parecidas, então vai mudar;
+              col-sm-8: Em telas pequenas pra cima vai ocupar 8 das 12 colunas, então 10 de 12 é só nas muito pequenas;
+              col-lg-6: Em telas grandes pra cima vai ocupar 6 de 12.
+             -->
+              <div class="col-10 col-sm-8 col-lg-6">
+                <!-- classes:
+                img-fluid: Faz essa imagem se encaixar no tamanho do pai dela (a div acima).
+              atributos:
+                loading="lazy": Lazy loading é uma técnica que consiste em não comprometer a aplicação só porque essa imagem ainda não carregou, é um atributo do HTML mesmo, e é útil quando vocês ficarem mais avançados e começarem a se preocupar com economizar memória e processamento.
+              -->
+                <img
+                  src="images/brasil.svg"
+                  class="img-fluid"
+                  alt="Mapa do Brasil"
+                  loading="lazy"
+                />
+              </div>
+              <!-- DIV DO TEXTO -->
+              <!-- classes (as mesmas da div do mapa do Brasil):
+              col-10: Uma row, na grid do Bootstrap, tem 12 colunas, aqui to dizendo que essa div em questão vai ocupar 10 delas (as 10 do meio tendo em vista que centralizei ali em cima), como não especifiquei um tamanho, na teoria todos os tamanhos de tela vão ter essa regra, mas logo depois especifiquei outras regras parecidas, então vai mudar;
+              col-sm-8: Em telas pequenas pra cima vai ocupar 8 das 12 colunas, então 10 de 12 é só nas muito pequenas;
+              col-lg-6: Em telas grandes pra cima vai ocupar 6 de 12.
+             -->
+              <div class="col-10 col-sm-8 col-lg-6">
+                <!-- classes:
+                display-5: Formata o texto num formato para títulos chamado display, no tamanho 5;
+                fw-bold: font-weight: bold;
+                mb-3: Margin-bottom de tamanho 3 (1rem).
+              -->
+                <h1 class="display-5 fw-bold mb-3">Sobre Nós</h1>
+                <!-- classes:
+              lead: Tipo de formatação de texto corrido com destaque.
+              -->
+                <p class="lead">
+                  Somos apaixonados por facilitar a vida das pessoas. Nosso
+                  buscador de CEP foi criado para oferecer uma experiência
+                  rápida e intuitiva, ajudando você a encontrar o CEP de
+                  qualquer endereço no Brasil com apenas alguns cliques. Nossa
+                  missão é ser sua ferramenta indispensável para envios,
+                  entregas e pesquisas.
+                </p>
+                <!-- classes:
+                d-grid: display grid, eu quero que o botão dentro dela fique ocupando todo o espaço dela, a sugestão da documentação é usar o display grid no pai para isso.
+              -->
+                <div class="d-grid">
+                  <!-- classes:
+                  btn: "Isso é um botão";
+                  btn-primary: "Esse botão é da cor primary (azul)";
+                  btn-lg: "Esse botão é maior que os botões normais".
+                atributos:
+                  onclick: define o que acontece quando o evento onclick é acionado (em outras palavras, quando o botão é clicado), nesse caso, tem um código JavaScript ali dentro que faz eu mudar de página, não precisam se preocupar por enquanto com esse código, nós veremos mais pra frente e ficará mais fácil de entender. 
+                -->
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-lg"
+                    onclick="window.location.href='./buscar.html'"
+                  >
+                    Buscar CEP
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIM DA DIV COM TODO O CONTEÚDO DA MAIN QUE TEM FOTO DE FUNDO -->
+
+        <!-- INÍCIO DA DIV SEM FOTO NO FUNDO -->
+        <!-- classes:
+          container-fluid: caixa que se aproxima das bordas;
+          py-5: Padding no eixo y de 5, faz a caixa de dentro ficar mais afastada verticalmente;
+          bg-dark-subtle: É uma cor que contrata com o modo dark clássico: https://getbootstrap.com/docs/5.3/customize/color/
+          d-flex: Display-flex;
+          justify-content-center: autoexplicativo;
+          align-items-center: autoexplicativo;
+          
+        -->
+        <div
+          class="container-fluid py-5 bg-dark-subtle d-flex justify-content-center align-items-center"
+        >
+          <!-- INÍCIO DA DIV DA CAIXA BRANCA -->
+          <!-- classes:
+          row: A estrutura mais comum para a grid do Bootstrap é de colunas dentro de rows dentro de containers, essa é a row, a div da caixa branca. Poderia colocar o d-flex que também funcionaria nesse caso;
+          p-4: Padding de tamanho 4;
+          my-0: Sem margin no eixo y, pelo menos nos tamanhos menores, esse valor se soma com o py-5 da div de fora pra espaçar a caixa da borda vertical;
+          my-sm-2: Mesma função da de cima, mas em telas small, fica com 2 de margin;
+          my-lg-5: E em telas maiores de 5;
+          col-11: A caixa vai ocupar 11 das 12 colunas da grid (como ela tá centralizada, vai meia coluna pra cada lado dela);
+          col-lg-8: Porém em telas maiores, ocupa menos colunas;
+          shadow-lg: Adiciona uma sombra grande ao redor da caixa, dando uma sensação de relevo;
+          rounded-4: Arredonda as bordas da caixa, vai de 0 a 5, também dá pra escrever circle ou pill;
+          bg-body-secondary: Deixa o plano de fundo da caixa nessa cor, caso queira ver mais cores, só ir na documentação;
+          border: Adiciona uma borda simples;
+          align-items-center: Não vou mais explicar;
+          justify-content-center: Não vou mais explicar;
+        -->
+          <div
+            class="row p-4 my-0 my-sm-2 my-lg-5 col-11 col-lg-8 shadow-lg rounded-4 bg-body-secondary border align-items-center justify-content-center"
+          >
+            <!-- INÍCIO DA DIV COM O CONTEÚDO DA CAIXA -->
+            <!-- classes:
+              p-3: Padding de tamanho 3;
+              p-lg-5: Padding de tamanho 5 em telas de lg pra cima;
+              col-lg-9: Quando a tela é menor que lg, essa div ocupa o espaço todo da caixa (tirando as margens), quando chega no large, ela ocupa 9 das 12 colunas;
+              col-xl-7: Porém quando chega nas extra grandes, ocupa 7, fiz isso pois o site estava feio no iPad Pro.
+            -->
+            <div class="p-3 p-lg-5 col-lg-9 col-xl-7">
+              <!-- classes:
+                display-4: display é um tipo de formatação de texto de título, nesse caso, no tamanho 4;
+                fw-bold: Coloca negrito.
+              -->
+              <h1 class="display-4 fw-bold">Confiabilidade</h1>
+              <!-- classes do p:
+                lead: Formata o texto num padrão que é para textos corridos que tenham certa ênfase;
+              classes do span:
+                fw-bold: Aplica negrito;
+                text-sucess: Muda a cor para o verde (success), fiz isso pois a API do ViaCEP tem toda a identidade visual verde.
+              -->
+              <p class="lead">
+                Encontre qualquer endereço com facilidade! Digite o CEP e nós
+                encontramos todas as informações para você. Utilizamos a
+                confiável API do
+                <span class="fw-bold text-success">ViaCEP</span> para garantir
+                resultados precisos.
+              </p>
+              <!-- classes:
+              d-grid: Assim como foi feito no botão da section de cima, colocar um display grid ao redor do botão faz ele ocupar o espaçod a div inteiro -->
+              <div class="d-grid">
+                <!-- É possível fazer uma tag de link ser uma tag de botão também, basta usar as mesmas classes:
+                  btn: Define que isso é um botão;
+                  btn-sucess: Define que ela terá a cor success, que é verde;
+                  btn-lg: Faz ele ficar um pouco maior;
+                -->
+                <a
+                  id="viacep"
+                  target="_blank"
+                  href="https://viacep.com.br/"
+                  class="btn btn-success btn-lg"
+                >
+                  Saiba Mais
+                </a>
+              </div>
+            </div>
+            <!-- FIM DA DIV COM O CONTEÚDO DA CAIXA -->
+          </div>
+          <!-- FIM DA DIV DA CAIXA BRANCA -->
+        </div>
+        <!-- FIM DA DIV SEM FOTO NO FUNDO -->
+      </main>
+      <!-- FIM DA MAIN -->
+
+      <!-- INÍCIO DO FOOTER -->
+      <!-- classes:
+        text-center: Alinha o texto no centro;
+        text-bg-dark: Deixa o fundo escuro e o texto com uma cor que contraste.
+      -->
+      <footer class="text-center text-bg-dark">
+        <!-- classes:
+          container: Cria um container que tem um espaçamento em relação às bordas laterais da página;
+          pt-4: padding-top de tamanho 4; 
+          mb-4: margin-bottom de tamanho 4.
+        -->
+        <section class="container pt-4 mb-4">
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-facebook: Classe do icon do Facebook
+            -->
+            <i class="bi bi-facebook"></i>
+          </a>
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-whatsapp: Classe do icon do Whatsapp
+            -->
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-instagram: Classe do icon do Instagram
+            -->
+            <i class="bi bi-instagram"></i>
+          </a>
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-linkedin: Classe do icon do Linkedin
+            -->
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-github: Classe do icon do GitHub
+            -->
+            <i class="bi bi-github"></i>
+          </a>
+        </section>
+        <!-- classes:
+          text-center: Alinha o texto no centro;
+          py-3: Padding no eixo y de 3. 
+        -->
+        <div class="text-center py-3">© 2024 Copyright: Buscador de CEP</div>
+      </footer>
+      <!-- FIM DO FOOTER -->
+    </div>
+    <!-- FIM DO CONTAINER DE NAV + MAIN + FOOTER -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,11 +1,339 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busca - BuscaCEP</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Importa o Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- CSS clássico -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- INÍCIO DO CONTAINER DE NAV + MAIN + FOOTER -->
+    <!-- classes:
+      min-vh-100: Equivalente a min-height: 100vh;
+      d-flex: Equivalente a display: flex;
+      flex-column: Equivalente a flex-direction: column; 
+    -->
+    <div class="min-vh-100 d-flex flex-column">
+      <!-- INÍCIO DA NAVBAR -->
+      <!-- classes:
+        navbar: Faz ser uma barra de navegação;
+        navbar-expand-md: Do tamanho md (medium) pra cima, a navbar fica normal, dali pra baixo ela colapsa, esse colapso é o que vai fazer aquele menu sanduíche aparecer;
+        text-bg-dark: Deixa o fundo escuro e o texto claro;
+        navbar-dark: Função similar, mas feito para a navbar.
+      -->
+      <nav class="navbar navbar-expand-md text-bg-dark navbar-dark">
+        <!-- classes:
+        container-fluid: Cria um container que fica bem próximo das bordas da tela
+       -->
+        <div class="container-fluid">
+          <!-- classes:
+          navbar-brand: É para adicionar aquela logo no canto esquerdo da navbar que todo site tem, como eu quero que seja clicável, coloquei numa tag <a>, mas poderia ser em outra, tipo a <span>;
+          h1: Formata o texto como se fosse uma tag <h1>;
+          mb-0: A tag <h1> tem margem abaixo, eu não quero que tenha nesse caso, então usei a abreviação de margin-bottom (mb) e especifiquei o valor 0, esse valor varia de 0 a 5.
+        -->
+          <a href="index.html" class="navbar-brand h1 mb-0">
+            <!-- classes:
+            mb-1: Adiciona margin-bottom (mb) de 1, para saber o tamanho disso, entenda que o Bootstrap usa uma variável que é o equivalente ao rem, se você passa 1, é 0.25rem, 2 é 0.5, 3 é 1rem, 4 é 1.5rem e 5 é 3rem, nesse caso como não editei nada, o rem é 16px.
+          -->
+            <img
+              src="images/lupa-branca.svg"
+              width="35px"
+              class="mb-1"
+              alt="Lupa"
+            />
+            BuscaCEP
+          </a>
+          <!-- classes:
+          navbar-toggler: Especifica que esse botão que vai ser o que vai controlar menu sanduíche da navbar.
+        atributos:
+          data-bs-toggle: Especifica a ação que esse botão vai fazer;
+          data-bs-target: Especifica o alvo dessa ação;
+          aria-controls: Atributos que começam com aria tem relação com semântica para leitores de tela, esse descreve o que esse botão controla, nesse caso, passei o id da barra de navegação ;
+          aria-label: Descreve a ação.
+        -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#nav"
+            aria-controls="nav"
+            aria-label="Expand Navegation"
+          >
+            <!-- classes:
+          navbar-toggler-icon: Marca onde o ícone do menu sanduíche vai aparecer, só o botão não é suficiente 
+        -->
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- classes:
+          collapse: Collapse é aquele item que abre e fecha tipo sanfona, aqui to fizendo que os links da barra de navegação serão assim;
+          navbar-collapse: Especifica mais ainda o tipo de collapse.
+        id:
+          existe para conectar com o botão que fará isso colapsar ou não em telas menores.
+        -->
+          <div class="collapse navbar-collapse" id="nav">
+            <!-- classes:
+            navbar-nav: Parece confuso, mas essa classe indica que parte da navbar contém os itens para navegar (links), nesse caso, o Bootstrap chamou essa parte de nav. 
+          -->
+            <ul class="navbar-nav">
+              <!-- classes:
+              nav-item: Indica que esse é um dos itens da nav. 
+            -->
+              <li class="nav-item">
+                <!-- classes:
+                nav-link: Indica que isso é um link de nav, ele adequa a estética sozinho;
+                active: Diz que esse é o link que deve ficar brilhando mais claro para indicar "você está aqui".
+              -->
+                <a href="index.html" class="nav-link">Início</a>
+              </li>
+              <!-- classes:
+              nav-item: Indica que esse é um dos itens da nav. 
+            -->
+              <li class="nav-item">
+                <!-- classes:
+                nav-link: Indica que isso é um link de nav, ele adequa a estética sozinho. 
+              -->
+                <a
+                  href="buscar.html"
+                  class="nav-link active"
+                  aria-current="page"
+                  >Buscar CEP</a
+                >
+              </li>
+              <!-- classes:
+              nav-item: Indica que esse é um dos itens da nav. 
+            -->
+              <li class="nav-item">
+                <!-- classes:
+                nav-link: Indica que isso é um link de nav, ele adequa a estética sozinho. 
+              -->
+                <a href="sobre.html" class="nav-link">Sobre</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- FIM DA NAVBAR -->
+      <!-- INÍCIO DA MAIN -->
+      <!-- classes:
+        flex-grow-1: Já expliquei nos outros dois HTML, é a classe que faz a main aumentar caso o tamanho da tela aumente, fazendo ela ocupar toda a tela, se não tiver isso ela fica pequena e o rodapé não cola no fundo;
+        d-flex: Essa tá aqui porque a div que tem dentro da main também vai fazer esse processo de aumentar mais, essa div dentro da main é quem tem o papel de parede, então é essencial que ela também cresça.
+      -->
+      <main class="flex-grow-1 d-flex">
+        <!-- INÍCIO DA DIV COM PAPEL DE PAREDE -->
+        <!-- classes:
+          text-bg-dark: Define que o fundo vai ser escuro e o texto vai se adequar a isso;
+          container-fluid: Faz aquele container que vai até os cantos;
+          flex-grow-1: Essa propriedade no CSS faz com que um elemento varie mais de tamanho quando damos ou tiramos zoom que os outros da flexbox, nesse caso, estou fazendo isso para que a main ocupe o espaço que sobrou da tela, fazendo o rodapé colar no final da página, contemplem o magoooo;
+          bg-image: Define que essa tag vai ter uma background-image (não é pro Bootstrap);
+          d-flex: Equivalente ao display: flex;
+          flex-column: Muda o eixo principal para a vertical;
+          align-items-center: Equivalente ao align-items: center;
+          justify-content-center: Equivalente ao justify-content: center; Estou fazendo isso pois quero centralizar o conteúdo principal da main bem no meio dela (no caso, estou centralizando a div onde os itens estão).
+          atributos:
+          id: Coloquei id pois no style.css estamos modificando a imagem de fundo.
+        -->
+        <div
+          id="main__div"
+          class="text-bg-dark container-fluid flex-grow-1 bg-image d-flex flex-column align-items-center justify-content-center"
+        >
+          <!-- INÍCIO DA DIV COM TODO O CONTEÚDO DENTRO -->
+          <!-- classes:
+            col-10, col-sm-8, col-md-6, col-lg-4: Já expliquei nos outros HTML's (se esse é o primeiro que você tá lendo, recomendo voltar pros outros), tem a ver com quantas colunas essa div vai ocupar em diferentes tamanhos de tela;
+            my-4: Margin no eixo horizontal de tamanho 4 (1.5rem)
+          -->
+          <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-4">
+            <!-- INÍCIO DO FORMULÁRIO PRA DIGITAR O CEP -->
+            <!-- id:
+              form-cep: Não tem relação com o Bootstrap, só adicionei pra puxar no JS e estilizar caso queira 
+            atributo:
+              novalidate: O HTML padrão já valida automaticamente os inputs de um formulário, mas essa validação é meio feia, então pra eu poder fazer minha própria validação, preciso impedir o HTML de fazer a padrão dele, pra isso esse atributo.
+              -->
+            <form id="form-cep" novalidate>
+              <!-- classes:
+                h5: Embora, em questão de semântica, isso seja um <h3>, eu quero que ele fique com a estética de um <h5>.
+                text-center: Centraliza o texto;
+                text-light: Deixa o texto claro;
+                mb-3: Margin abaixo de 3 (1rem);
+              -->
+              <h3 class="h5 text-center text-light mb-3">
+                Digite o CEP desejado
+              </h3>
+              <!-- classes:
+                input-group: Serve para dizer que queremos agrupar inputs com outros inputs ou inputs com outras coisas, tipo botões, é essencial para o botão de Verificar ficar colado no input;
+                mb-5: Margin abaixo de tamanho 5 (3rem);
+                has-validation: Serve para quando seu agrupamento de inputs vai ter uma verificação de erro ali dentro, isso evita bugs de formatação no Bootstrap
+              -->
+              <!-- INÍCIO DA DIV COM O INPUT, BOTÃO, ETC -->
+              <div class="input-group mb-5 has-validation">
+                <!-- classe:
+                  form-floating: Essa div será usada para fazer aquele label flutuante, mais sobre em: https://getbootstrap.com/docs/5.3/forms/floating-labels/ ;
+                  text-dark: Deixa o texto preto, o label especial tava sumindo com o text-bg-dark lá do começo do HTML; 
+                  bg-transparent: Mesma coisa, tava bugando, mas dessa vez é porque a borda do input tava com um fundo escuro esquisito.
+                id:
+                  Serve para puxar lá no JS;
+                  -->
+                <div
+                  class="form-floating text-dark bg-transparent"
+                  id="cep-input-div"
+                >
+                  <!-- classes:
+                    form-control: Faz o Bootstrap entender que isso é um input;
+                    form-control-lg: Faz ficar maior, incluindo a letra dentro;
+                  atributos:
+                    name: entender que dado é esse ao enviar o formulário, nem vai ser usado, mas deixei aqui;
+                    id: Vamos puxar no JS;
+                    type: O tipo de input, o mais comum é o text, mas tem vários;
+                    placeholder: Na teoria é o texto que aparece dentro do input antes de clicarmos pra digitar, nesse caso aqui não é exatamente, na verdade o que vai aparecer é aquela <label>, mas é preciso ter um placeholder mesmo assim (coisa da configuração base do Bootstrap que temos que seguir);
+                    required: Faz com que esse input seja obrigatório pro formulário funcionar, o que na verdade não muda muita coisa, já que estamos validando no JS também, nem é obrigatório ter nesse caso.
+                  -->
+                  <input
+                    name="cep-input"
+                    id="cep-input"
+                    type="text"
+                    placeholder="CEP"
+                    class="form-control form-control-lg"
+                    required
+                  />
+                  <!-- atributo:
+                    for: Especificamos o id do input que queremos conectar a esse label, é útil para várias razões, mas nesse caso é basicamente para o Bootstrap entender que deve conectar ambos.
+                  -->
+                  <label for="cep-input">CEP</label>
+                </div>
+                <!-- classes:
+                  btn: Especifica que isso é um botão;
+                  btn-dark: Deixa o botão escuro;
+                type:
+                  botões podem ter mais de uma função, uma delas é enviar formulários, para isso especificamos o botão como sendo do tipo submit (submeter, enviar);
+                  -->
+                <button type="submit" class="btn btn-dark">Verificar</button>
+                <!-- classes:
+                  invalid-feedback: Na verdade essa div não aparece na tela, ela é a div que tem o texto de erro que vai aparecer caso digitemos um CEP invalido (o que pode ser considerado CEP invalido nós especificaremos no JS), na verdade ela aparece quando a classe "is-invalid" aparece no <input>, nesse caso ela vai precisar aparecer no <input> e na <div> do .form-floating, explico melhor isso no JS;
+                -->
+                <div class="invalid-feedback">Digite um CEP válido</div>
+              </div>
+              <!-- FIM DA DIV COM O INPUT, BOTÃO, ETC -->
+            </form>
+            <!-- FIM DO FORMULÁRIO PRA DIGITAR O CEP -->
+            <!-- INÍCIO DA SECTION ONDE VÃO APARECER OS RESULTADOS DA BUSCA -->
+            <!-- id:
+              Iremos precisar achar essa section especificamente para adicionar itens dentro dela usando JS 
+            -->
+            <section id="response-container">
+              <!-- Aqui é onde as informações sobre o CEP aparecerão -->
+            </section>
+            <!-- FIM DA SECTION ONDE VÃO APARECER OS RESULTADOS DA BUSCA -->
+          </div>
+          <!-- FIM DA DIV COM TODO O CONTEÚDO DENTRO -->
+        </div>
+        <!-- FIM DA DIV COM PAPEL DE PAREDE -->
+      </main>
+      <!-- FIM DA MAIN -->
+
+      <!-- INÍCIO DO FOOTER -->
+      <!-- classes:
+        text-center: Alinha o texto no centro;
+        text-bg-dark: Deixa o fundo escuro e o texto com uma cor que contraste.
+      -->
+      <footer class="text-center text-bg-dark">
+        <!-- classes:
+          container: Cria um container que tem um espaçamento em relação às bordas laterais da página;
+          pt-4: padding-top de tamanho 4; 
+          mb-4: margin-bottom de tamanho 4.
+        -->
+        <section class="container pt-4 mb-4">
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-facebook: Classe do icon do Facebook
+            -->
+            <i class="bi bi-facebook"></i>
+          </a>
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-whatsapp: Classe do icon do Whatsapp
+            -->
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-instagram: Classe do icon do Instagram
+            -->
+            <i class="bi bi-instagram"></i>
+          </a>
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-linkedin: Classe do icon do Linkedin
+            -->
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <!-- classes:
+            icon-link: Formata da forma padrão para quando é um link na forma de ícone;
+            link-light: Formata links na cor clara;
+            link-opacity-50-hover: Faz com que, ao passar por cima do link com o mouse (hover), a opacidade do link reduza para 50%;
+            mx-2: Margin no eixo x valendo 2;
+          -->
+          <a href="#" class="icon-link link-light link-opacity-50-hover mx-2">
+            <!-- classes:
+              bi: Bootstrap Icon;
+              bi-github: Classe do icon do GitHub
+            -->
+            <i class="bi bi-github"></i>
+          </a>
+        </section>
+        <!-- classes:
+          text-center: Alinha o texto no centro;
+          py-3: Padding no eixo y de 3. 
+        -->
+        <div class="text-center py-3">© 2024 Copyright: Buscador de CEP</div>
+      </footer>
+      <!-- FIM DO FOOTER -->
+    </div>
+    <!-- FIM DO CONTAINER DE NAV + MAIN + FOOTER -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
 </html>
